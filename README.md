@@ -33,3 +33,12 @@
 
 <img src="cont.png">
 
+## Hypervisor vs Container runtime engine [CRE]
+
+<img src="cre.png">
+
+# Getting started with Docker 
+
+<img src="docker.png">
+
+
