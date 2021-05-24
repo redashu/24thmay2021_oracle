@@ -278,6 +278,10 @@ alpine        latest    6dbb9cc54074   5 weeks ago   5.61MB
 
 ```
 
+## docker in one glimpse
+
+<img src="docker1.png">
+
 
 
 
