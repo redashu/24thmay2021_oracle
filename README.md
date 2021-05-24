@@ -395,6 +395,96 @@ ashuc11
 ashuc11
 
 ```
+# Docker images
+
+## understanding image layer concept 
+
+<img src="layper.png">
+
+
+## creating docker images from source code 
+
+<img src="img_create.png">
+
+
+## dockerfile final step
+
+<img src="final.png">
+
+
+### building our first docker image for python code 
+
+```
+❯ ls
+javacode   pythoncode webapps
+❯ cd  pythoncode
+❯ ls
+Dockerfile oracle.py
+❯ docker  build   -t   ashu:pycodev1    .
+[+] Building 48.2s (9/9) FINISHED                                                                         
+ => [internal] load build definition from Dockerfile                                                 0.1s
+ => => transferring dockerfile: 594B                                                                 0.1s
+ => [internal] load .dockerignore                                                                    0.1s
+ => => transferring context: 2B                                                                      0.0s
+ => [internal] load metadata for docker.io/library/oraclelinux:8.3                                   0.0s
+ => CACHED [1/4] FROM docker.io/library/oraclelinux:8.3                                              0.0s
+ => [internal] load build context                                                                    0.1s
+ => => transferring context: 269B                                                                    0.0s
+ => [2/4] RUN  dnf  install python3 -y                                                              45.6s
+ => [3/4] RUN mkdir  /ashu                                                                           0.5s 
+ => [4/4] COPY  oracle.py  /ashu/oracle.py                                                           0.1s 
+ => exporting to image                                                                               1.6s 
+ => => exporting layers                                                                              1.6s 
+ => => writing image sha256:0a52c168af7206531a865243d252eabdd83bdd4caa3081125575ca19e3da432e         0.0s 
+ => => naming to docker.io/library/ashu:pycodev1  
+ 
+ ```
+ 
+ ### creating container from last image we have build 
+ 
+ ```
+ ❯ docker  run  -itd  --name ashupc1  ashu:pycodev1
+255f2a54360edcad951c5841fac54acc12e274f30411a3f28f8addd323cb5f9c
+
+
+```
+
+### checking output 
+
+```
+❯ docker logs  ashupc1
+Hello all , welcome to python..!!
+Welcome to LnB..
+Welcome to Containers ..!!
+______________________
+Hello all , welcome to python..!!
+Welcome to LnB..
+Welcome to Containers ..!!
+______________________
+Hello all , welcome
+
+```
+
+### capture alive 
+
+```
+ docker logs -f  ashupc1
+ 
+```
+
+### summary of python code based  -- build - run - ps - logs
+
+<img src="allin1.png">
+
+### day1 summary 
+
+<img src="sum.png">
+
+
+
+
+
+
 
 
 
