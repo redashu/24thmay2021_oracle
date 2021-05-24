@@ -283,5 +283,118 @@ alpine        latest    6dbb9cc54074   5 weeks ago   5.61MB
 <img src="docker1.png">
 
 
+## creating first container 
+
+<img src="create_cont.png">
+
+### alpine container creating 
+
+<img src="alp_c.png">
+
+
+###
+
+```
+  docker  run  --name ashuc1   -d  alpine:latest   ping  fb.com 
+```
+
+### checking list of running containers 
+
+```
+❯ docker  ps
+CONTAINER ID   IMAGE            COMMAND             CREATED              STATUS              PORTS     NAMES
+16278d7804de   alpine:latest    "ping fb.com"       24 seconds ago       Up 22 seconds                 shobhit_c1
+6a055e4d9823   alpine:latest    "ping fb.com"       About a minute ago   Up About a minute             asim1
+54a45eb73fc6   busybox:latest   "ping google.com"   About a minute ago   Up About a minute             rahul
+33729456c548   alpine:latest    "ping fb.com"       2 minutes ago        Up 2 minutes                  ashuc1
+
+
+```
+
+### checking all containers list running / exited 
+
+```
+❯ docker  ps -a
+CONTAINER ID   IMAGE             COMMAND                 CREATED          STATUS                       PORTS      NAMES
+f57d1a8ac17d   alpine:latest     "ping fb.com"           2 minutes ago    Up 2 minutes                            sreenathc2
+a8eaad8fe46e   alpine:latest     "ping fb.com"           6 minutes ago    Exited (137) 5 minutes ago              ajithc3
+44938093f018   alpine:latest     "ping google.com"       7 minutes ago    Exited (137) 5 minutes ago              ganesh2
+7dc81a9708f4   alpine:latest     "ping fb.com"           8 minutes ago    Exited (137) 5 minutes ago              sreenathc1
+c92fa7ca39a4   alpine:latest     "google.com"            8 minutes ago    Created                                 ganesh1
+e4b5b6c87f20   tomcat:latest     "ping www.google.com"   8 minutes ago    Exited (137) 5 minutes ago   8080/tcp   testsudhi
+bcedac141698   alpine:latest     "ping google.com"       9 minutes ago    Exited (137) 5 minutes ago              priya
+27f77afc618a   oraclelinux:8.3   "/bin/bash"             11 minutes ago   Exited (0) 7 minutes ago                testsudhi1
+16278d7804de   alpine:latest     "ping fb.com"           11 minutes ago   Exited (137) 5 minutes ago              shobhit_c1
+6bc768058ee9   alpine:latest     "ping .com"             11 minutes ago   Exited (1) 11 minutes ago               ajithc1
+6a055e4d9823   alpine:latest     "ping fb.com"          
+
+```
+
+### starting a exited / stopped container 
+
+```
+❯ docker  start  ashuc1
+ashuc1
+❯ docker  ps
+CONTAINER ID   IMAGE           COMMAND             CREATED          STATUS          PORTS     NAMES
+eb22edfca7ca   alpine:latest   "ping google.com"   37 seconds ago   Up 35 seconds             ganesh3
+a9ab671360cf   alpine:latest   "ping fb.com"       2 minutes ago    Up 2 minutes              govind
+5cfe172ea627   alpine:latest   "ping google.com"   4 minutes ago    Up 4 minutes              sivacnt
+f57d1a8ac17d   alpine:latest   "ping fb.com"       9 minutes ago    Up 9 minutes              sreenathc2
+33729456c548   alpine:latest   "ping fb.com"       20 minutes ago   Up 3 seconds              ashuc1
+
+```
+
+### accessing shell of a running container 
+
+<img src="exec.png">
+
+
+### exec demo 
+
+```
+❯ docker  exec   -it  ashuc1    sh
+/ # 
+/ # 
+/ # ls  /
+bin    dev    etc    home   lib    media  mnt    opt    proc   root   run    sbin   srv    sys    tmp    usr    var
+/ # ifconfig 
+eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:06  
+          inet addr:172.17.0.6  Bcast:172.17.255.255  Mask:255.255.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:382 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:450 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:35328 (34.5 KiB)  TX bytes:42396 (41.4 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+/ # uname
+Linux
+/ # uname -r
+4.14.231-173.361.amzn2.x86_64
+/ # exit
+
+```
+
+### stoping and removing container 
+
+```
+❯ docker  ps
+CONTAINER ID   IMAGE     COMMAND         CREATED         STATUS         PORTS     NAMES
+ff61b4b58e81   alpine    "ping fb.com"   3 minutes ago   Up 5 seconds             ashuc11
+❯ docker  stop  ashuc11
+ashuc11
+❯ docker  rm   ashuc11
+ashuc11
+
+```
+
 
 
