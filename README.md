@@ -1,4 +1,14 @@
-# please check day1 to day5 branches to access content daywise 
+# Day1 recall
 
-## Enjoy learning 
+## snap 
+
+<img src="recap.png">
+
+## removing all containers 
+
+```
+
+ docker rm  $(docker ps -aq) 
+ 
+```
 
