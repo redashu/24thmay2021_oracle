@@ -395,6 +395,15 @@ NETWORK ID     NAME      DRIVER    SCOPE
 <img src="port.png">
 
 
+##  Replacing ENV variable during container creation time 
+
+```
+  docker  build -t  test:envv1  . 
+10135  docker  run -it --rm   test:envv1  bash 
+10136  docker  run -it --rm  -e  x=500  test:envv1  bash 
+
+```
+
 
 
 
