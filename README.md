@@ -82,3 +82,42 @@ af0ac62760ea   18 hours ago    /bin/sh -c #(nop)  MAINTAINER ashutoshh@linu…  
 
 ```
 
+### Docker images registry -- Docker hub 
+
+<img src="reg.png">
+
+## docker image name reality 
+
+<img src="imgname.png">
+
+## tagging docker image as your docker user ID before pusing 
+
+```
+docker  tag     httpd:25thmay2021v1    dockerashu/httpd:25thmay2021v1
+```
+
+### pushing history 
+
+```
+10059  docker  tag     httpd:25thmay2021v1    dockerashu/httpd:25thmay2021v1  
+10060  docker  images
+10061  history
+10062  docker  images
+❯ docker  login  -u dockerashu
+Password: 
+Login Succeeded
+❯ docker  push  dockerashu/httpd:25thmay2021v1
+The push refers to repository [docker.io/dockerashu/httpd]
+729ef4f54cc3: Pushed 
+9dc80c6bdbab: Pushed 
+02a3a073ed48: Mounted from library/oraclelinux 
+25thmay2021v1: digest: sha256:a44cfd3acea1810ce3e1a397aceaf2af0600fde185930fa822e31434e5960bf7 size: 950
+❯ docker  logout
+Removing login credentials for https://index.docker.io/v1/
+
+
+```
+
+
+
+
