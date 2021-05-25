@@ -405,6 +405,10 @@ NETWORK ID     NAME      DRIVER    SCOPE
 ```
 
 
+## Docker storage
+
+<img src="st.png">
+
 
 
 
