@@ -358,6 +358,38 @@ eth1      Link encap:Ethernet  HWaddr 02:42:AC:11:00:11
 <img src="drivers.png">
 
 
+### remove all network bridge 
+
+```
+❯ docker  network  prune
+WARNING! This will remove all custom networks not used by at least one container.
+Are you sure you want to continue? [y/N] y
+Deleted Networks:
+ganesh1
+ashubr2
+rahul1
+shahbr1
+sudhinw
+ajitbr1
+asimbridge
+ashubr1
+sreenathbr1
+sivanetwork
+govind5
+
+❯ docker  network  ls
+NETWORK ID     NAME      DRIVER    SCOPE
+11960b38a237   bridge    bridge    local
+6c5eda50cb17   host      host      local
+30e752f4b59b   none      null      local
+
+```
+
+
+### Use of host bridge 
+
+<img src="hostbr.png">
+
 
 
 
