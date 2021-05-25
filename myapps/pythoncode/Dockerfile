@@ -13,7 +13,15 @@ RUN mkdir  /ashu
 # creating a directory 
 COPY  oracle.py  /ashu/oracle.py
 ADD   hello.py  /ashu/hello.py
+WORKDIR  /ashu/
 # copy -- is to copy data from client machine 
 # to docker engine during image build time
-CMD ["python3","/ashu/hello.py"]
+#CMD ["python3","/ashu/hello.py"]
+ENTRYPOINT  ["python3"]
+CMD ["hello.py"]
 #  this is for default parent proces
+#docker  run -itd --name c1  ashu:pyv1   
+#docker  run -itd --name c2 ashu:pyv1 oracle.py
+
+
+
