@@ -1,0 +1,10 @@
+apiVersion: v1 # this kube-apiserver version to req pod
+kind: Pod # requesting for POD only 
+metadata: # info about pod 
+ name: ashupod-123  # name of my POD 
+spec: 
+ containers:
+ - image: dockerashu/httpd:25thmay2021v1 # docker image from Docker hub 
+   name: ashuc1 # name of the container 
+   ports: # optional field 
+   - containerPort: 80 # port of application running in container
