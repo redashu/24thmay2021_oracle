@@ -444,6 +444,35 @@ ajitpod-123    1/1     Running   0          14m
 ```
 
 
+### executing commands in pod
+
+```
+❯ kubectl  exec  -it  ashupod-123  -- ls  /
+bin   dev  home  lib64	mnt  proc  run	 srv  tmp  var
+boot  etc  lib	 media	opt  root  sbin  sys  usr
+❯ kubectl  exec  -it  ashupod-123  --  ping  fb.com
+PING fb.com (157.240.229.35) 56(84) bytes of data.
+64 bytes from edge-star-mini-shv-02-iad3.facebook.com (157.240.229.35): icmp_seq=1 ttl=51 time=0.707 ms
+64 bytes from edge-star-mini-shv-02-iad3.facebook.com (157.240.229.35): icmp_seq=2 ttl=51 time=0.645 ms
+64 bytes from edge-star-mini-shv-02-iad3.facebook.com (157.240.229.35): icmp_seq=3 ttl=51 time=0.644 ms
+64 bytes from edge-star-mini-shv-02-iad3.facebook.com (157.240.229.35): icmp_seq=4 ttl=51 time=0.654 ms
+^C
+--- fb.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 49ms
+rtt min/avg/max/mdev = 0.644/0.662/0.707/0.036 ms
+❯ kubectl  exec  -it  ashupod-123  --  date  ; cal
+Wed May 26 12:00:03 UTC 2021
+      May 2021        
+Su Mo Tu We Th Fr Sa  
+                   1  
+ 2  3  4  5  6  7  8  
+ 9 10 11 12 13 14 15  
+16 17 18 19 20 21 22  
+23 24 25 26 27 28 29  
+30 31                 
+
+```
+
 
 
 
