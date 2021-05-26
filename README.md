@@ -157,6 +157,125 @@ hello  world
 
 ```
 
+## Docker engine drawback for prodution grade deployment 
+
+<img src="dockerpr.png">
+
+# COntainer orchestration tools 
+
+<img src="corch.png">
+
+## Introduction to k8s 
+
+<img src="k8s.png">
+
+## k8s  arch  machine level info 
+
+<img src="k8sarch1.png">
+
+## kube-apiserver. info 
+
+<img src="apiser.png">
+
+
+### INstalling kubectl -- the client of kubernetes in Mac 
+
+```
+ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   154  100   154    0     0    277      0 --:--:-- --:--:-- --:--:--   276
+100 53.2M  100 53.2M    0     0  3327k      0  0:00:16  0:00:16 --:--:-- 7872k
+❯ 
+
+
+---
+
+
+❯ chmod +x ./kubectl
+❯ sudo mv ./kubectl /usr/local/bin/kubectl
+Password:
+
+
+```
+
+
+### checking client software version 
+
+```
+❯ kubectl version --client
+Client Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.1", GitCommit:"5e58841cce77d4bc13713ad2b91fa0d961e69192", GitTreeState:"clean", BuildDate:"2021-05-12T14:18:45Z", GoVersion:"go1.16.4", Compiler:"gc", Platform:"darwin/amd64"}
+
+```
+
+### checking token auth file on the master node 
+
+
+<img src="auth.png">
+
+### checking server version and its connectiong from client machine 
+
+```
+❯ cd  Desktop
+❯ ls
+DevopsSRE           apiser.png          corch.png           k8s.png             oracle24thmay2021   webapp_dev
+PHD                 auth.png            dockerpr.png        k8sarch1.png        oracle_training.txt
+admin.conf          backup              helm2               myapps              techienest
+❯ 
+❯ kubectl   version     --kubeconfig=admin.conf
+Client Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.1", GitCommit:"5e58841cce77d4bc13713ad2b91fa0d961e69192", GitTreeState:"clean", BuildDate:"2021-05-12T14:18:45Z", GoVersion:"go1.16.4", Compiler:"gc", Platform:"darwin/amd64"}
+Server Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.1", GitCommit:"5e58841cce77d4bc13713ad2b91fa0d961e69192", GitTreeState:"clean", BuildDate:"2021-05-12T14:12:29Z", GoVersion:"go1.16.4", Compiler:"gc", Platform:"linux/amd64"}
+❯ kubectl   version     --kubeconfig=/Users/fire/Desktop/admin.conf
+Client Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.1", GitCommit:"5e58841cce77d4bc13713ad2b91fa0d961e69192", GitTreeState:"clean", BuildDate:"2021-05-12T14:18:45Z", GoVersion:"go1.16.4", Compiler:"gc", Platform:"darwin/amd64"}
+Server Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.1", GitCommit:"5e58841cce77d4bc13713ad2b91fa0d961e69192", GitTreeState:"clean", BuildDate:"2021-05-12T14:12:29Z", GoVersion:"go1.16.4", Compiler:"gc", Platform:"linux/amd64"}
+❯ 
+
+```
+
+###  Connecting to kubeapi server to get info about Nodes
+
+```
+❯ kubectl   get  nodes      --kubeconfig=admin.conf
+NAME         STATUS   ROLES                  AGE     VERSION
+masternode   Ready    control-plane,master   4h18m   v1.21.1
+minion1      Ready    <none>                 4h18m   v1.21.1
+minion2      Ready    <none>                 4h17m   v1.21.1
+minion3      Ready    <none>                 4h17m   v1.21.1
+
+```
+
+### getting response in JSON / YAML / text format 
+
+```
+ kubectl   get  nodes      --kubeconfig=admin.conf  
+10035  kubectl   get  nodes      --kubeconfig=admin.conf   -o json 
+10036  kubectl   get  nodes      --kubeconfig=admin.conf   -o yaml
+
+```
+
+### COnfig file copy to homedire
+
+```
+❯ cp -v  admin.conf ~/.kube/config
+admin.conf -> /Users/fire/.kube/config
+❯ 
+❯ kubectl   get  nodes
+NAME         STATUS   ROLES                  AGE     VERSION
+masternode   Ready    control-plane,master   4h23m   v1.21.1
+minion1      Ready    <none>                 4h23m   v1.21.1
+minion2      Ready    <none>                 4h22m   v1.21.1
+minion3      Ready    <none>                 4h22m   v1.21.1
+
+```
+
+
+### info about config and context in k8s client side 
+
+<img src="config.png">
+
+
+
+
 
 
 
