@@ -425,6 +425,24 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 
 ```
 
+### POd deployment from URL 
+
+```
+k8s@masternode ~]$ kubectl apply  -f  https://raw.githubusercontent.com/redashu/24thmay2021_oracle/day3/ashupod1.yaml 
+pod/ashupod-123 unchanged
+[k8s@masternode ~]$ kubectl delete  pod  ashupod-123
+pod "ashupod-123" deleted
+[k8s@masternode ~]$ 
+[k8s@masternode ~]$ 
+[k8s@masternode ~]$ kubectl apply  -f  https://raw.githubusercontent.com/redashu/24thmay2021_oracle/day3/ashupod1.yaml 
+pod/ashupod-123 created
+[k8s@masternode ~]$ kubectl get  po 
+NAME           READY   STATUS    RESTARTS   AGE
+ajitpod-123    1/1     Running   0          14m
+
+
+```
+
 
 
 
