@@ -274,6 +274,45 @@ minion3      Ready    <none>                 4h22m   v1.21.1
 <img src="config.png">
 
 
+## kube-schedular 
+
+<img src="kube-sch.png">
+
+### reality of kube-controller-manager
+
+<img src="kube.png">
+
+
+### Replication controller 
+
+<img src="rc.png">
+
+
+### Node controller 
+
+<img src="nc.png">
+
+## Etcd 
+
+<img src="etcd.png">
+
+
+## Time to talk about COntainer networking in K8s 
+
+### overall container networking models
+
+<img src="cnet.png">
+
+### CNI in k8s
+
+<img src="cni.png">
+
+
+### Minion side view 
+
+<img src="min.png">
+
+
 
 
 
