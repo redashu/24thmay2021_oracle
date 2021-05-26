@@ -312,6 +312,120 @@ minion3      Ready    <none>                 4h22m   v1.21.1
 
 <img src="min.png">
 
+## k8s cluster setup methods 
+
+<img src="method.png">
+
+## k8s depricated Dokcer -- reality 
+
+<img src="dropdocker.png">
+
+## Getting started with k8s deployment unit --called POD 
+
+<img src="pod.png">
+
+## POD file structure 
+
+<img src="pod2.png">
+
+
+## POd yaml design 
+
+<img src="poddsg.png">
+
+## checking connection with kubernetes master from client machine 
+
+```
+❯ kubectl  get  nodes
+NAME         STATUS   ROLES                  AGE   VERSION
+masternode   Ready    control-plane,master   8h    v1.21.1
+minion1      Ready    <none>                 8h    v1.21.1
+minion2      Ready    <none>                 8h    v1.21.1
+minion3      Ready    <none>                 8h    v1.21.1
+❯ kubectl  get   pods
+No resources found in default namespace.
+❯ kubectl  get   pod
+No resources found in default namespace.
+❯ kubectl  get   po
+No resources found in default namespace.
+❯ kubectl  get   no
+NAME         STATUS   ROLES                  AGE   VERSION
+masternode   Ready    control-plane,master   8h    v1.21.1
+minion1      Ready    <none>                 8h    v1.21.1
+minion2      Ready    <none>                 8h    v1.21.1
+minion3      Ready    <none>                 8h    v1.21.1
+
+
+
+```
+
+## dry-run of yaml file 
+
+```
+ ls
+ashupod1.yaml
+❯ kubectl  apply  -f  ashupod1.yaml  --dry-run=client
+pod/ashupod-123 created (dry run)
+
+```
+
+## deploying pod
+
+```
+❯ kubectl  apply  -f  ashupod1.yaml
+pod/ashupod-123 created
+❯ kubectl  get  pods
+NAME           READY   STATUS              RESTARTS   AGE
+ashupod-123    1/1     Running             0          9s
+asimpod-123    0/1     ContainerCreating   0          0s
+narsing-123    0/1 
+
+```
+### more pod details 
+
+<img src="pod_details.png">
+
+### detail info about all the pods
+
+```
+❯ kubectl  get  pod    -o wide
+NAME           READY   STATUS    RESTARTS   AGE     IP                NODE      NOMINATED NODE   READINESS GATES
+ajitpod-123    1/1     Running   0          3m35s   192.168.34.6      minion1   <none>           <none>
+ashupod-123    1/1     Running   0          4m4s    192.168.179.198   minion2   <none>           <none>
+asimpod-123    1/1     Running   0          3m55s   192.168.179.200   minion2   <none>           <none>
+ganesh-123     1/1     Running   0          3m27s   192.168.179.201   minion2   <none>           <none>
+narsing-123    1/1     Running   0          4m      192.168.34.4      minion1   <none>           <none>
+priyapod-123   1/1     Running   0          3m56s   192.168.50.198    minion3   <none>           <none>
+
+```
+
+### accessing container running inside pod 
+
+```
+❯ kubectl  exec  -it  ashupod-123  -- /bin/bash
+[root@ashupod-123 html]# 
+[root@ashupod-123 html]# 
+[root@ashupod-123 html]# ls
+images  index.html  styles
+[root@ashupod-123 html]# cat  /etc/os-release 
+NAME="Oracle Linux Server"
+VERSION="8.3"
+ID="ol"
+ID_LIKE="fedora"
+VARIANT="Server"
+VARIANT_ID="server"
+
+```
+
+### logs of a pod 
+
+```
+❯ kubectl  logs   ashupod-123
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 192.168.179.198. Set the 'ServerName' directive globally to suppress this message
+
+```
+
+
 
 
 
