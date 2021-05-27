@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+ namespace: ashuproject1
+ name: ashu-rc1
+spec: 
+ replicas: 1 # number of pod to deploy
+ template: # RC will use template to create PODs 
+  metadata:
+   labels: # label of POD 
+    x1: helloashu111
+  spec:
+   containers:
+   - image: dockerashu/httpd:25thmay2021v1
+     name: ashuc1
+     ports:
+     - containerPort: 80
+
+# pasting service YAML here 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ashuproject1 # namespace info 
+  creationTimestamp: null
+  labels:
+    app: ashusvc099
+  name: ashusvc099  # name of service 
+spec:
+  ports:
+  - name: 1223-80
+    port: 1223 # port of service 
+    protocol: TCP 
+    targetPort: 80 # port of POD app 
+  selector: # Pod FInder  
+    x1: helloashu111 # label of Pod 
+  type: NodePort
+status:
+  loadBalancer: {}
