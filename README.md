@@ -197,5 +197,31 @@ ashupod-2     1/1     Running   0          83m    run=ashupod-2
 
 <img src="svcyaml.png">
 
+## svc got deployed 
+
+```
+❯ kubectl  apply   -f  ashsvc1.yaml
+service/ashusvc1 created
+
+```
+
+<img src="svcd.png">
+
+
+## help from kubectl 
+
+```
+062  kubectl  create   service   nodeport  --help
+10063  history
+10064  kubectl  run  --help
+10065  history
+10066  kubectl  run  --help
+10067  history
+10068  kubectl  explain  pod
+10069  kubectl  explain  pod.spec 
+10070  kubectl  explain  pod.spec.containers 
+
+```
+
 
 
