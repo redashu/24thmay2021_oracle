@@ -150,5 +150,52 @@ Handling connection for 1234
 
 <img src="net1.png">
 
+## Introduction to service in k8s 
+
+<img src="service.png">
+
+## k8s service connecting to POD 
+
+<img src="svc2pod.png">
+
+## type of service in k8s
+
+<img src="stype.png">
+
+## Nodeport type service 
+
+<img src="np.png">
+
+## checking and assigning label to a POD
+
+```
+❯ kubectl  get  po
+NAME          READY   STATUS    RESTARTS   AGE
+ashupod-123   1/1     Running   0          101m
+ashupod-2     1/1     Running   0          82m
+❯ kubectl  get  po --show-labels
+NAME          READY   STATUS    RESTARTS   AGE    LABELS
+ashupod-123   1/1     Running   0          101m   <none>
+ashupod-2     1/1     Running   0          82m    run=ashupod-2
+❯ ls
+abc.yml       ashupod1.yaml newpod.yml
+❯ kubectl  apply -f  ashupod1.yaml
+pod/ashupod-123 configured
+❯ kubectl  get  po --show-labels
+NAME          READY   STATUS    RESTARTS   AGE    LABELS
+ashupod-123   1/1     Running   0          102m   x=helloashu
+ashupod-2     1/1     Running   0          83m    run=ashupod-2
+
+```
+
+## creating nodeport service 
+
+<img src="npcreate.png">
+
+
+## understanding service YAML 
+
+<img src="svcyaml.png">
+
 
 
