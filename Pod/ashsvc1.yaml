@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service # Now kind is Service 
+metadata:
+  namespace: ashuproject1 # namespace info 
+  creationTimestamp: null
+  labels:  # label of service 
+    app: ashusvc1
+  name: ashusvc1 # name of service 
+spec:
+  ports:
+  - name: 1234-80
+    port: 1234  # port of service IP 
+    protocol: TCP
+    targetPort: 80  # port of pod application 
+  selector: # Pod FInder --
+     x: helloashu # this is the label of POD where svc will forward traffic 
+  type: NodePort  # type of service we want to create 
+status:
+  loadBalancer: {}
