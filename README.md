@@ -380,6 +380,19 @@ ashusvc88    NodePort   10.104.253.102   <none>        1234:32476/TCP   7s
 
 ```
 
+## k8s POD -RC -RS -Deployment journey 
+
+<img src="pod2dep.png">
+
+## Deployment understanding 
+
+<img src="dep.png">
+
+## Deployment in reality 
+
+<img src="dep1.png">
+
+
 
 
 
