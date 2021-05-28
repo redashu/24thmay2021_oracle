@@ -78,4 +78,61 @@ service "ashusvc88" deleted
 
 ```
 
+## Deployment 
+
+
+### creating 
+
+```
+ kubectl  create  deployment   ashudep111  --image=oracleindia.azurecr.io/nginx:28thmay2021v1  --dry-run=client -o yaml              >deploy1.yml
+ 
+ 
+```
+
+### creating LB service 
+
+```
+ kubectl   create  service  loadbalancer  ashusv443  --tcp  1234:80  --dry-run=client  -o yaml 
+ 
+```
+### deploying 
+
+```
+
+❯ kubectl  apply -f  deploy1.yml
+deployment.apps/ashudep111 created
+service/ashusv443 created
+❯ kubectl  get deploy
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+ashudep111   0/1     1            0           8s
+❯ kubectl  get   rs
+NAME                    DESIRED   CURRENT   READY   AGE
+ashudep111-576f7d58bb   1         1         1       12s
+❯ kubectl  get   pod
+NAME                          READY   STATUS    RESTARTS   AGE
+ashudep111-576f7d58bb-hvgvj   1/1     Running   0          16s
+❯ kubectl  get   svc
+NAME        TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+ashusv443   LoadBalancer   10.103.135.81   <pending>     1234:30277/TCP   20s
+
+```
+
+### scaling 
+
+```
+❯ kubectl  get  deploy
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+ashudep111   1/1     1            1           7m51s
+❯ kubectl  scale  deploy ashudep111  --replicas=5
+deployment.apps/ashudep111 scaled
+❯ kubectl  get  deploy
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+ashudep111   1/5     5            1           8m6s
+❯ kubectl  get  deploy
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+ashudep111   5/5     5            5           8m9s
+
+```
+
+
 
