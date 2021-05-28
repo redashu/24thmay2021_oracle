@@ -138,6 +138,124 @@ ashudep111   5/5     5            5           8m9s
 
 <img src="javas.png">
 
+### creating java webapp deployment 
+
+```
+kubectl  create  deployment  ashujavaweb  --image=dockerashu/javawebapp:28thmay2021_v1  --dry-run=client -o yaml  >jsp.yml
+
+```
+### creating nodeport service 
+
+```
+kubectl  create  service  nodeport  ssvc1  --tcp  1234:8080 --namespace ashuproject1  --dry-run=client -o yaml
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ssvc1
+  name: ssvc1
+  namespace: ashuproject1
+spec:
+  ports:
+  - name: 1234-8080
+    port: 1234
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: ssvc1
+  type: NodePort
+status:
+  loadBalancer: {}
+
+```
+
+## checking deployment and svc
+
+
+```
+❯ kubectl  get deploy,rs,pod,svc
+NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/ashujavaweb   1/1     1            1           11m
+
+NAME                                    DESIRED   CURRENT   READY   AGE
+replicaset.apps/ashujavaweb-744b6d758   1         1         1       11m
+
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/ashujavaweb-744b6d758-jpfw6   1/1     Running   0          11m
+
+NAME            TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/ssvc1   NodePort   10.108.229.94   <none>        1234:32567/TCP   11m
+
+
+```
+
+
+### checking describe output of deployment 
+
+```
+❯ kubectl  describe  deployment  ashujavaweb
+Name:                   ashujavaweb
+Namespace:              ashuproject1
+CreationTimestamp:      Fri, 28 May 2021 12:36:25 +0530
+Labels:                 app=ashujavaweb
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=ashujavaweb
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=ashujavaweb
+  Containers:
+   javawebapp:
+    Image:        dockerashu/javawebapp:28thmay2021_v1
+    Port:         8080/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  
+```
+
+
+## updating app 
+
+```
+kubectl  set  image  deployment  ashujavaweb    javawebapp=dockerashu/javawebapp:28thmay2021_v2
+deployment.apps/ashujavaweb image updated
+
+```
+
+### revision history 
+
+```
+❯ kubectl  rollout  history deployment  ashujavaweb
+deployment.apps/ashujavaweb 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+
+```
+
+### rolling out 
+
+```
+❯ kubectl  rollout  history deployment  ashujavaweb
+deployment.apps/ashujavaweb 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+
+❯ kubectl  rollout  undo  deployment  ashujavaweb
+deployment.apps/ashujavaweb rolled back
+❯ kubectl  rollout  status  deployment  ashujavaweb
+deployment "ashujavaweb" successfully rolled out
+
+```
+
 
 
 
