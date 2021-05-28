@@ -134,5 +134,10 @@ ashudep111   5/5     5            5           8m9s
 
 ```
 
+## java web deployment model 
+
+<img src="javas.png">
+
+
 
 
