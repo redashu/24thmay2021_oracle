@@ -256,6 +256,24 @@ deployment "ashujavaweb" successfully rolled out
 
 ```
 
+## RBAC. 
+
+## creating a restricted access in K8s 
+
+### steps
+
+```
+
+ kubectl   create   namespace   ashu-friend 
+10368  kubectl  get  ns
+10369  kubectl get  sa   -n   ashu-friend 
+10370  kubectl  creata  sa  jack    -n   ashu-friend 
+10371  kubectl  create  sa  jack    -n   ashu-friend 
+10372  kubectl get  sa   -n   ashu-friend 
+10373  kubectl get  secret  -n   ashu-friend 
+10374  kubectl describe   secret  default-token-5w5cm   -n   ashu-friend 
+
+
 
 
 
